@@ -1,5 +1,7 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import {Header} from "@/components/layout";
+import s from "@/components/layout/Story.module.sass";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ['400','500','700'] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body style={{overflowX: 'hidden'}} className={roboto.className}>
+      <div className={'container'}>
+          <Header/>
+      </div>
+      {children}
+      <footer className={s.copyright}>
+        © 2023 All rights reserved
+      </footer>
+      </body>
     </html>
   );
 }
